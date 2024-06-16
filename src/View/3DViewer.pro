@@ -9,15 +9,15 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    ../s21_object.cc \
+    ../Model/s21_object.cc \
     main.cc \
     mainwindow.cc \
     myopenglwidget.cc \
 
 HEADERS += \
-    ../controller.h \
-    ../s21_object.h \
-    controller.h \
+    ../Controller/controller.h \
+    ../Model/s21_object.h \
+    ../Controller/controller.h \
     mainwindow.h \
     myopenglwidget.h \
 

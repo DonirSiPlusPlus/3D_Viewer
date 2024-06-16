@@ -1,7 +1,7 @@
 #ifndef SRC_CONTROLLER_H
 #define SRC_CONTROLLER_H
 
-#include "../s21_object.h"
+#include "../Model/s21_object.h"
 
 namespace s21 {
 class Controller {

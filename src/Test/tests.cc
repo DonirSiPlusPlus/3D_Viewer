@@ -1,13 +1,13 @@
 #include <gtest/gtest.h>
 
-#include "s21_object.h"
+#include "../Model/s21_object.h"
 
 TEST(valid_file, 1) {
   EXPECT_ANY_THROW({ s21::Facade m("WwOdef.obj"); });
 }
 
 TEST(valid_file, 2) {
-  EXPECT_ANY_THROW({ s21::Facade m("Acube.obj"); });
+  EXPECT_ANY_THROW({ s21::Facade m("ATest/resources/cube.obj"); });
 }
 
 TEST(valid_file, 3) {
@@ -15,7 +15,7 @@ TEST(valid_file, 3) {
 }
 
 TEST(valid_file, 4) {
-  EXPECT_ANY_THROW({ s21::Facade m("./dath/cube.obj"); });
+  EXPECT_ANY_THROW({ s21::Facade m("./dath/Test/resources/cube.obj"); });
 }
 
 TEST(valid_file, 5) {
@@ -27,12 +27,11 @@ TEST(valid_file, 6) {
 }
 
 TEST(valid_file, 7) {
-  EXPECT_ANY_THROW({ s21::Facade m("cube.objl"); });
+  EXPECT_ANY_THROW({ s21::Facade m("Test/resources/cube.objl"); });
 }
 
 TEST(move_x, 1) {
-  clock_t start = clock();
-  s21::Facade f("cube.obj");
+  s21::Facade f("Test/resources/cube.obj");
   std::vector<double> m_old = f.GetMatrix3d();
 
   f.Transformation(s21::type_transf::moving, 2.5, 0, 0);
@@ -48,7 +47,7 @@ TEST(move_x, 1) {
 }
 
 TEST(move_x, 2) {
-  s21::Facade f("cube.obj");
+  s21::Facade f("Test/resources/cube.obj");
   std::vector<double> m_old = f.GetMatrix3d();
 
   f.Transformation(s21::type_transf::moving, -3.14, 0, 0);
@@ -61,7 +60,7 @@ TEST(move_x, 2) {
 }
 
 TEST(move_y, 1) {
-  s21::Facade f("cube.obj");
+  s21::Facade f("Test/resources/cube.obj");
   std::vector<double> m_old = f.GetMatrix3d();
 
   f.Transformation(s21::type_transf::moving, 0, 1.99, 0);
@@ -74,7 +73,7 @@ TEST(move_y, 1) {
 }
 
 TEST(move_y, 2) {
-  s21::Facade f("cube.obj");
+  s21::Facade f("Test/resources/cube.obj");
   std::vector<double> m_old = f.GetMatrix3d();
 
   f.Transformation(s21::type_transf::moving, 0, -13.7654, 0);
@@ -87,7 +86,7 @@ TEST(move_y, 2) {
 }
 
 TEST(move_z, 1) {
-  s21::Facade f("cube.obj");
+  s21::Facade f("Test/resources/cube.obj");
   std::vector<double> m_old = f.GetMatrix3d();
 
   f.Transformation(s21::type_transf::moving, 0, 0, 100);
@@ -100,7 +99,7 @@ TEST(move_z, 1) {
 }
 
 TEST(move_z, 2) {
-  s21::Facade f("cube.obj");
+  s21::Facade f("Test/resources/cube.obj");
   std::vector<double> m_old = f.GetMatrix3d();
 
   f.Transformation(s21::type_transf::moving, 0, 0, -99.432);
@@ -113,7 +112,7 @@ TEST(move_z, 2) {
 }
 
 TEST(move_all, 1) {
-  s21::Facade f("cube.obj");
+  s21::Facade f("Test/resources/cube.obj");
   std::vector<double> m_old = f.GetMatrix3d();
 
   f.Transformation(s21::type_transf::moving, 1.00003, 456.04, -99.432);
@@ -128,7 +127,7 @@ TEST(move_all, 1) {
 }
 
 TEST(dont_move, 1) {
-  s21::Facade f("cube.obj");
+  s21::Facade f("Test/resources/cube.obj");
   std::vector<double> m_old = f.GetMatrix3d();
 
   f.Transformation(s21::type_transf::moving, 0, 0, 0);
@@ -141,7 +140,7 @@ TEST(dont_move, 1) {
 }
 
 TEST(turn_x, 1) {
-  s21::Facade f("cube.obj");
+  s21::Facade f("Test/resources/cube.obj");
   f.Transformation(s21::type_transf::rotation, 30, 0, 0);
 
   std::vector<double> m_turn = f.GetMatrix3d();
@@ -157,7 +156,7 @@ TEST(turn_x, 1) {
 }
 
 TEST(turn_x, 2) {
-  s21::Facade f("cube.obj");
+  s21::Facade f("Test/resources/cube.obj");
   f.Transformation(s21::type_transf::rotation, -45, 0, 0);
 
   std::vector<double> m_turn = f.GetMatrix3d();
@@ -176,7 +175,7 @@ TEST(turn_x, 2) {
 }
 
 TEST(turn_y, 1) {
-  s21::Facade f("cube.obj");
+  s21::Facade f("Test/resources/cube.obj");
   f.Transformation(s21::type_transf::rotation, 0, 60, 0);
 
   std::vector<double> m_turn = f.GetMatrix3d();
@@ -192,7 +191,7 @@ TEST(turn_y, 1) {
 }
 
 TEST(turn_y, 2) {
-  s21::Facade f("cube.obj");
+  s21::Facade f("Test/resources/cube.obj");
   f.Transformation(s21::type_transf::rotation, 0, -45, 0);
 
   std::vector<double> m_turn = f.GetMatrix3d();
@@ -209,7 +208,7 @@ TEST(turn_y, 2) {
 }
 
 TEST(turn_z, 1) {
-  s21::Facade f("cube.obj");
+  s21::Facade f("Test/resources/cube.obj");
   f.Transformation(s21::type_transf::rotation, 0, 0, 45);
 
   std::vector<double> m_turn = f.GetMatrix3d();
@@ -226,7 +225,7 @@ TEST(turn_z, 1) {
 }
 
 TEST(turn_z, 2) {
-  s21::Facade f("cube.obj");
+  s21::Facade f("Test/resources/cube.obj");
   f.Transformation(s21::type_transf::rotation, 0, 0, -60);
 
   std::vector<double> m_turn = f.GetMatrix3d();
@@ -242,7 +241,7 @@ TEST(turn_z, 2) {
 }
 
 TEST(dont_turn, 1) {
-  s21::Facade f("cube.obj");
+  s21::Facade f("Test/resources/cube.obj");
   std::vector<double> m_old = f.GetMatrix3d();
 
   f.Transformation(s21::type_transf::rotation, 0, 0, 0);
@@ -255,7 +254,7 @@ TEST(dont_turn, 1) {
 }
 
 TEST(turn_all, 1) {
-  s21::Facade f("cube.obj");
+  s21::Facade f("Test/resources/cube.obj");
   f.Transformation(s21::type_transf::rotation, -11, 78, -99);
   std::vector<double> m_turn = f.GetMatrix3d();
   std::vector<double> m_new{-0.50223458, 0.57638738,  0.40686363,  0.49650397,
@@ -271,7 +270,7 @@ TEST(turn_all, 1) {
 }
 
 TEST(scale, 1) {
-  s21::Facade f("cube.obj");
+  s21::Facade f("Test/resources/cube.obj");
   std::vector<double> m_old = f.GetMatrix3d();
 
   f.Transformation(s21::type_transf::scaling, 2.5);
@@ -284,7 +283,7 @@ TEST(scale, 1) {
 }
 
 TEST(scale, 2) {
-  s21::Facade f("cube.obj");
+  s21::Facade f("Test/resources/cube.obj");
   std::vector<double> m_old = f.GetMatrix3d();
 
   f.Transformation(s21::type_transf::scaling, 10);
@@ -297,7 +296,7 @@ TEST(scale, 2) {
 }
 
 TEST(scale, 3) {
-  s21::Facade f("cube.obj");
+  s21::Facade f("Test/resources/cube.obj");
   std::vector<double> m_old = f.GetMatrix3d();
 
   f.Transformation(s21::type_transf::scaling, 0.25);
@@ -310,7 +309,7 @@ TEST(scale, 3) {
 }
 
 TEST(scale, 4) {
-  s21::Facade f("cube.obj");
+  s21::Facade f("Test/resources/cube.obj");
   std::vector<double> m_old = f.GetMatrix3d();
 
   f.Transformation(s21::type_transf::scaling, 0.0001);
@@ -323,7 +322,7 @@ TEST(scale, 4) {
 }
 
 TEST(scale_valid, 1) {
-  s21::Facade f("cube.obj");
+  s21::Facade f("Test/resources/cube.obj");
   std::vector<double> m_old = f.GetMatrix3d();
 
   f.Transformation(s21::type_transf::scaling, 0);
@@ -336,7 +335,7 @@ TEST(scale_valid, 1) {
 }
 
 TEST(scale_valid, 2) {
-  s21::Facade f("cube.obj");
+  s21::Facade f("Test/resources/cube.obj");
   std::vector<double> m_old = f.GetMatrix3d();
 
   f.Transformation(s21::type_transf::scaling, -23);
@@ -349,7 +348,7 @@ TEST(scale_valid, 2) {
 }
 
 TEST(transf_all, 1) {
-  s21::Facade f("cube.obj");
+  s21::Facade f("Test/resources/cube.obj");
 
   f.Transformation(s21::type_transf::moving, 1.00003, 456.04, -99.432);
   f.Transformation(s21::type_transf::rotation, -11, 78, -99);
@@ -370,7 +369,7 @@ TEST(transf_all, 1) {
 }
 
 TEST(restore, 1) {
-  s21::Facade f("cube.obj");
+  s21::Facade f("Test/resources/cube.obj");
 
   std::vector<double> result{f.GetMatrix3d()};
 
@@ -387,31 +386,15 @@ TEST(restore, 1) {
   for (int i = 0; i < result.size(); ++i) {
     EXPECT_TRUE(fabsl(transf[i] - result[i]) < 1e-7);
   }
-  // f.printAll();
 }
 
-// TEST(new_object, 1) {
-//   s21::Facade f("cube.obj");
-//   double old_length = f.GetMaxLength();
-//   std::vector<double> old_m{f.GetMatrix3d()};
-//   std::vector<int> old_v{f.GetVertexes()};
-
-//   f.Set2DTextures("cube.obj");
-//   std::vector<double> new_m{f.GetMatrix3d()};
-//   std::vector<int> new_v{f.GetVertexes()};
-
-//   //EXPECT_FALSE(old_m == new_m);
-//   EXPECT_TRUE(old_v == new_v);
-//   EXPECT_TRUE(fabsl(f.GetMaxLength() - old_length) < 1e-7);
-// }
-
 TEST(new_object, 2) {
-  s21::Facade f("cube.obj");
+  s21::Facade f("Test/resources/cube.obj");
   double old_length = f.GetMaxLength();
   std::vector<double> old_m{f.GetMatrix3d()};
   std::vector<int> old_v{f.GetVertexes()};
 
-  f.Set2DTextures("cube.obj");
+  f.Set2DTextures("Test/resources/cube.obj");
   std::vector<double> new_m{f.GetMatrix3d()};
   std::vector<int> new_v{f.GetVertexes()};
 

@@ -8,7 +8,7 @@
 #include <QMessageBox>
 #include <QStatusBar>
 
-#include "../controller.h"
+#include "../Controller/controller.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
