@@ -30,7 +30,7 @@ clean:
 	@rm -Rf Viewer.html
 
 dvi: clean
-	makeinfo -o Viewer.html --html --no-warn --force 
+	makeinfo -o Viewer.html --html --no-warn --force doc.texi
 	open Viewer.html/index.html
 # cat ./doc.texi
 

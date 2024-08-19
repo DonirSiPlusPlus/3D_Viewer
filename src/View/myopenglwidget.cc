@@ -60,18 +60,18 @@ void MyOpenGLWidget::mouseMoveEvent(QMouseEvent *mo) {
   update();
 }
 
-//обработка входящего сигнала
+// обработка входящего сигнала
 void MyOpenGLWidget::inputName() {
-  //по сигналу открывается окно выбора файла
+  // по сигналу открывается окно выбора файла
   QString filePath = QFileDialog::getOpenFileName(
       this, tr("Open file"), ".", tr("Object files (*.obj)"), 0,
       QFileDialog::DontUseNativeDialog);
 
-  //отпраавка переменной в класс, который посылает сигнал
+  // отпраавка переменной в класс, который посылает сигнал
   MainWindow *m = qobject_cast<MainWindow *>(sender());
   m->mFilePath = filePath;
   fileName_ = filePath.toStdString();
-  //Перезагрузка данных модели из нового файла
+  // Перезагрузка данных модели из нового файла
   try {
     if (s_->empty()) {
       s_ = new s21::Controller(fileName_);  // there
@@ -95,7 +95,7 @@ void MyOpenGLWidget::inputName() {
 }
 
 void MyOpenGLWidget::drawFigure() {
-  //Проверка что модель создалась
+  // Проверка что модель создалась
   if (!s_->empty()) {
     // Вращение по мышке
     glRotatef(xRot, 1, 0, 0);
@@ -107,7 +107,7 @@ void MyOpenGLWidget::drawFigure() {
     glVertexPointer(3, GL_DOUBLE, 0, s_->GetMatrix3d().data());
     glEnableClientState(GL_VERTEX_ARRAY);
 
-    //Отрисовка вершин
+    // Отрисовка вершин
     glPointSize(sizeVertex);  // размер вершины в пикселях
     glColor3d(colorElement.colorVertexRed,
               colorElement.colorVertexGreen,  // по умолчанию альфа=1
@@ -116,7 +116,7 @@ void MyOpenGLWidget::drawFigure() {
       if (typeVertex == 1) {  // выбор формы отображения вершины
         glEnable(GL_POINT_SMOOTH);  // отображать вершины в форме круга
       } else if (typeVertex == 2) {
-        glDisable(GL_POINT_SMOOTH);  //отображать вершины в форме квадрата
+        glDisable(GL_POINT_SMOOTH);  // отображать вершины в форме квадрата
       }
       glDrawArrays(GL_POINTS, 0,
                    s_->GetCountOfVertexes());  // there rewrite by controller

@@ -59,8 +59,8 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow() { delete ui; }
 
-//отсылка сигнала, что нужно загузить файл на виджет, и вставка его имени в
-//текстовое поле
+// отсылка сигнала, что нужно загузить файл на виджет, и вставка его имени в
+// текстовое поле
 void MainWindow::downloadFileClick() {
   emit downloadFile();
   ui->box_file_name->setText(mFilePath);
